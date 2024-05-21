@@ -22,23 +22,7 @@ export function buildJWTAuthorization(jwt: string): Authorization {
 }
 
 export function getTauriResponseType(type?: AxiosResponseType): TauriResponseType {
-  let responseType = TauriResponseType.JSON
-  if (type !== undefined && type !== null) {
-    switch (type.toLowerCase()) {
-      case 'json': {
-        responseType = TauriResponseType.JSON
-        break
-      }
-      case 'text': {
-        responseType = TauriResponseType.Text
-        break
-      }
-      default: {
-        responseType = TauriResponseType.Binary
-      }
-    }
-  }
-  return responseType
+  return TauriResponseType.Text
 }
 
 export function buildTauriRequestData(data?: any): Body | undefined {
