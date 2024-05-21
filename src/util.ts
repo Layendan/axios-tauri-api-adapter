@@ -64,7 +64,7 @@ export const buillRequestUrl = (config: TauriAxiosRequestConfig): string => {
     throw new Error('config.baseURL or config.url must be specified')
   }
   if (config.baseURL) {
-    return buildUrl(config.baseURL, { path: config.url, queryParams: config.params })
+    return buildUrl(config.baseURL, { path: config.url, queryParams: config.params }) ?? ''
   }
   const url = config.url ? config.url : ''
   let urlObj = URLParse(url, true)
@@ -72,7 +72,7 @@ export const buillRequestUrl = (config: TauriAxiosRequestConfig): string => {
   const params = urlObj.query
   urlObj.set('pathname', '')
   urlObj.set('query', '')
-  return buildUrl(urlObj.toString(), { path: path, queryParams: mergeQueryParams(params, config.params) })
+  return buildUrl(urlObj.toString(), { path: path, queryParams: mergeQueryParams(params, config.params) }) ?? ''
 }
 
 export function mergeQueryParams(...queryParams: IQueryParams[]): IQueryParams | undefined {

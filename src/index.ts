@@ -28,7 +28,7 @@ export const axiosTauriApiAdapter = (config: TauriAxiosRequestConfig): AxiosProm
           ...(config.auth && buildBasicAuthorization(config.auth)),
           ...(config.jwt && buildJWTAuthorization(config.jwt)),
         },
-        responseType: getTauriResponseType(config.responseType),
+        responseType: getTauriResponseType('text'),
         timeout: timeout,
         url: buillRequestUrl(config),
         method: <HttpVerb>config.method?.toUpperCase(),
