@@ -1,9 +1,9 @@
-import { InternalAxiosRequestConfig } from 'axios'
+import { AxiosRequestConfig } from 'axios'
 
 export interface Authorization {
   Authorization: string
 }
 
-export interface TauriAxiosRequestConfig extends InternalAxiosRequestConfig {
+export interface TauriAxiosRequestConfig extends AxiosRequestConfig {
   jwt?: string
 }

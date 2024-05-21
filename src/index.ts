@@ -6,7 +6,7 @@ import {
   buildBasicAuthorization,
   buildJWTAuthorization,
   buildTauriRequestData,
-  buildRequestUrl,
+  buillRequestUrl,
   getTauriResponseType,
 } from './util'
 
@@ -30,7 +30,7 @@ export const axiosTauriApiAdapter = (config: TauriAxiosRequestConfig): AxiosProm
         },
         responseType: getTauriResponseType('text'),
         timeout: timeout,
-        url: buildRequestUrl(config),
+        url: buillRequestUrl(config),
         method: <HttpVerb>config.method?.toUpperCase(),
       })
       .then((response) => {
@@ -41,10 +41,7 @@ export const axiosTauriApiAdapter = (config: TauriAxiosRequestConfig): AxiosProm
             data: response.data,
             status: response.status,
             statusText: statusText,
-            headers: {
-              ...response.headers,
-              'set-cookie': response.rawHeaders['set-cookie'],
-            },
+            headers: response.headers,
             config: config,
           })
         } else {
